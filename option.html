@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <a href="popup.html" class="back-arrow">← Back</a>  
+  <hr>
+  <title>Code Analyzer Settings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #f8f9fa;
+    }
+
+    h1 {
+      color: #333;
+      margin-top: 0;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .toggle-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .toggle {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    .toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 30px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 22px;
+      width: 22px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #5cb85c;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(30px);
+    }
+
+    button {
+      background-color: #5cb85c;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    button:hover {
+      background-color: #4cae4c;
+    }
+
+    .api-key-container {
+      position: relative;
+    }
+
+    .toggle-visibility {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      background: none;
+      border: none;
+      color: #777;
+      cursor: pointer;
+    }
+
+    .info-text {
+      font-size: 12px;
+      color: #6c757d;
+      margin-top: 5px;
+    }
+
+    .success-message {
+      color: #5cb85c;
+      margin-top: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Code Analyzer Settings</h1>
+
+  <div class="card">
+    <h2>AI Analysis</h2>
+    <div class="form-group toggle-container">
+      <label class="toggle">
+        <input type="checkbox" id="enable-ai">
+        <span class="slider"></span>
+      </label>
+      <span>Enable AI-powered code analysis</span>
+    </div>
+    <p class="info-text">When enabled, selected code will be analyzed using OpenAI's GPT to detect security vulnerabilities, malicious patterns, and code quality issues.</p>
+
+    <div class="form-group">
+      <label for="openai-api-key">OpenAI API Key</label>
+      <div class="api-key-container">
+        <input type="password" id="openai-api-key" placeholder="sk-...">
+        <button class="toggle-visibility" id="toggle-api-key">Show</button>
+      </div>
+      <p class="info-text">Your API key is stored locally and is only used to communicate with OpenAI's API. Get an API key from <a href="https://platform.openai.com/api-keys" target="_blank">OpenAI's website</a>.</p>
+    </div>
+
+    <div class="form-group">
+      <button id="save-settings">Save Settings</button>
+      <div id="save-success" class="success-message">Settings saved successfully!</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>About</h2>
+    <p>Code Analyzer v1.0 - Gabriel Rizzi</p>
+    <p>A browser extension that helps you identify potentially malicious or vulnerable code</p>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+.code-analyzer-overlay {
+    transition: border-color 0.3s ease;
+    pointer-events: none;
+  }
+  
+  .code-analyzer-overlay:hover {
+    border-color: #2a6496 !important;
+  }
+  
+  .code-analyzer-label {
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    z-index: 9999;
+  }
+  
+  .code-analyzer-notification {
+    animation: fadeIn 0.3s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
